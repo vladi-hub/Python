@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+    <img src="{% static "images/sitelogo.png" %}" alt="Logo" />
+    {% block content %}
+	
+	{% if location %}
+	
+	
+	<!-- Header -->
+	<header id="header">
+		
+		<div class="logo">
+			<span class="icon fa-diamond"></span>
+		</div>					
+		<div class="content">
+			<div class="inner">
+				<h1>{{ location.name }}</h1>
+				<p>{{ location.address }}<br />
+				for free under the <a href="{% url 'locationsview' 0 %}">Add Location</a></p>
+			</div>
+		</div>
+		<nav>
+			<ul>
+			{% for asset in assets %}
+				<li><a href="{% url 'assetview' asset.id %}">{{ asset.name }}</a></li>
+			{% endfor %}	
+			</ul>
+			<ul>
+			{% for service in services %}
+				<li><a href="{% url 'serviceview' service.id %}">{{ service.name }}</a></li>
+			{% endfor %}	
+			</ul>
+		</nav>
+	</header>
+	{% endif %}
+	<article id="location" tabindex="1">								
+	<h2 class="major">Location - {{ location.name }}</h2>
+	<span class="image main"><img src="{% static "/images/pic03.jpg" %}" alt="" /></span>
+	<p>						
+	<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Submit" />
+	{% for error in field.errors %}
+	  <p style="color: red">{{ error }}</p>
+	{% endfor %}
+	</form>
+	</br>
+	</p>
+	</article>
+	{% if location %}
+	<li><a href="{% url 'assetview' 0 location.id%}">Add Asset</a></li>
+	</br>
+	<li><a href="{% url 'serviceview' 0 location.id%}">Add Service</a></li>
+	{% endif %}
+{% endblock %}

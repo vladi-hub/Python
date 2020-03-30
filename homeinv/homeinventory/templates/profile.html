@@ -1,0 +1,11 @@
+<form method="post">
+  {% csrf_token %}
+  </br>
+  Email: <input type="text" name="email" value="{{ user.email }}"/>
+  </br>
+  New Password:<input type="password" name="npass"></input>
+	</br>
+	Current password: <input type="password" name="cpass"></input>
+	</br>
+  <button type="submit">Save changes</button>
+</form>

@@ -1,0 +1,3 @@
+1.Test and fix - whole Signup process
+2.Fix locationview.html and view - assets and services are not visibile 
+3.Build mobile app

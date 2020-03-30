@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% load static %}
+<html>
+	<head>
+		<title>Dimension by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static "/assets/css/main.css" %}" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="{% static "/assets/css/noscript.css" %}" /></noscript>
+
+	</head>
+	<body>	
+
+	<!-- Scripts -->
+			<script src="{% static "/assets/js/jquery.min.js" %}"></script>
+			
+			<script src="{% static "/assets/js/skel.min.js" %}"></script>
+			
+			<script src="{% static "/assets/js/util.js" %}"></script>
+			<script src="{% static "/assets/js/main.js" %}"></script>
+			
+			<header>
+    <h1>Django Simple Login</h1>
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+      <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+  </header>
+  <hr>
+  <!-- Wrapper -->
+			<div id="wrapper">
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p> <ul class="icons">
+									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+					</footer>
+
+			</div>
+  <!-- BG -->
+			<div id="bg"></div>
+
+		{% if cmd is not None %}
+	
+				 <script type="text/javascript">
+				 $(document).ready(function () {
+					 //$('#{{ cmd }}href')[0].click();
+					 //$.get('/hi/main/{{cmd}}/#{{cmd}}');
+					 window.location = '/hi/main/{{cmd}}/#{{cmd}}';
+				});
+				   
+			   </script>
+			{% endif %}
+			
+	</body>
+</html>
